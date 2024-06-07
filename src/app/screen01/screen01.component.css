@@ -4,6 +4,7 @@
     flex: 1 1 auto;
 }
 
+/**/
 .custom-toolbar {
     position: absolute;
     top: 0;
@@ -16,3 +17,13 @@
     color: white;
     font-weight: 600;
   }
+/**/
+
+/*
+@media only screen and (orientation: portrait) {
+    .custom-toolbar {}
+  }
+@media only screen and (orientation: landscape) {
+    .custom-toolbar {}
+  }
+*/
