@@ -1,0 +1,1 @@
+export function tester(){let e=document.getElementById("left_action");e.onclick=function(t){t.preventDefault(),alert("Left")};let n=document.getElementById("right_action");n.onclick=function(t){t.preventDefault(),alert("Right")}}
