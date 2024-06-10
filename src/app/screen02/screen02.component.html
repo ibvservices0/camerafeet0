@@ -1,9 +1,14 @@
 <mat-toolbar class="custom-toolbar">
     <span>CAMERA-FEET</span>
     <span class="example-fill-remaining-space"></span>
-    <button mat-button (click)="actionScreen02()">
-        Accion
+    <button mat-button id="left_action" (click)="actionScreen02left()">
+        Left
+    </button>
+    <button mat-button id="right_action" (click)="actionScreen02right()">
+        Right
     </button>
 </mat-toolbar>
 <br><br><br><br>
-<p>PANTALLA-2</p>
+<div class="div_message" id="div_autorizando" hidden="hidden">Autorizando...</div>
+<div class="div_message" id="div_autorizado_ok">Autorizado OK</div>
+<div class="div_message" id="div_autorizado_error">ERROR en autorización</div>
