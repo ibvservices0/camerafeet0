@@ -38,7 +38,8 @@
               "src/styles.css"
             ],
             "scripts": [
-              "src/scripts/mytest.js"
+              "src/scripts/mytest.js",
+              "src/scripts/permissionacel.js"
             ]
           },
           "configurations": {
