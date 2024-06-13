@@ -1,1 +1,0 @@
-export function tester(){alert("Hello")}export function permission_accelerometers(){DeviceMotionEvent&&typeof DeviceMotionEvent.requestPermission=="function"&&DeviceMotionEvent.requestPermission()}export function do_pose1(){document.getElementById("btphoto_pose1").addEventListener("click",()=>{alert("Click pose1")})}
