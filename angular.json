@@ -39,7 +39,8 @@
             ],
             "scripts": [
               "src/scripts/mytest.js",
-              "src/scripts/permissionacel.js"
+              "src/scripts/permissionacel.js",
+              "src/scripts/mypose1.js"
             ]
           },
           "configurations": {

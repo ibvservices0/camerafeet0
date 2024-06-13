@@ -9,11 +9,30 @@ export class KernelfeetService {
   private isIos: boolean;
   private isSafari: boolean;
 
+  private isAuthenticated: boolean;
+
+  private isFootLeft: boolean;
+  private isFootRight: boolean;
+
+  private isSheetA4: boolean;
+  private isSheetUS: boolean;
+
+
+
   constructor() { 
     this.isAndroid = false;
     this.isIos = false;
     this.isSafari = false;
+
+    this.isAuthenticated = false;
+
+    this.isFootLeft = false;
+    this.isFootRight = false;
+
+    this.isSheetA4 = false;
+    this.isSheetUS = false;
   }
+
 
   public set_isAndroid(val: boolean){
     this.isAndroid = val;
@@ -35,5 +54,40 @@ export class KernelfeetService {
     return this.isSafari;
   }
 
+
+  public set_isAuthenticated(val: boolean){
+    this.isAuthenticated = val;
+  }
+  public is_authenticated(): boolean{
+    return this.isAuthenticated;
+  }
+
+  public set_isFootLeft(val: boolean){
+    this.isFootLeft = val;
+  }
+  public is_footLeft(): boolean{
+    return this.isFootLeft;
+  }
+
+  public set_isFootRight(val: boolean){
+    this.isFootRight = val;
+  }
+  public is_footRight(): boolean{
+    return this.isFootRight;
+  }
+
+  public set_isSheetA4(val: boolean){
+    this.isSheetA4 = val;
+  }
+  public is_sheetA4(){
+    return this.isSheetA4;
+  }
+
+  public set_isSheetUS(val: boolean){
+    this.isSheetUS = val;
+  }
+  public is_sheetUS(){
+    return this.isSheetUS;
+  }
 
 }

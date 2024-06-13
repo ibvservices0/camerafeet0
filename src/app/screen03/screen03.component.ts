@@ -6,6 +6,10 @@ import { KernelfeetService } from '../kernelfeet.service';
 
 import { HostListener } from '@angular/core';
 
+import * as mypose1 from '../../scripts/mypose1.js'
+
+
+
 
 @Component({
   selector: 'app-screen03',
@@ -18,7 +22,9 @@ export class Screen03Component implements OnInit, OnDestroy {
 
   constructor(private router: Router, public global_service: KernelfeetService){}
 
-  ngOnInit(){}
+  ngOnInit(){
+    mypose1.do_pose1();
+  }
 
   ngOnDestroy(){}
 

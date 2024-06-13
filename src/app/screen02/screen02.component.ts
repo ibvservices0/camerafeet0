@@ -22,7 +22,7 @@ import { JSONloginRequest } from '../ibv-types-adhoc';
 })
 export class Screen02Component implements OnInit, OnDestroy {
 
-  private dato: any;
+  //private dato: any;
   private divAutorizando: any;
   private divAutorizadoOk: any;
   private divAutorizadoError: any;
@@ -42,7 +42,7 @@ export class Screen02Component implements OnInit, OnDestroy {
 
 
   //, private http: HttpClient
-  constructor(private router: Router, public kernelfeet_service: KernelfeetService, private http: HttpClient){
+  constructor(private router: Router, public global_service: KernelfeetService, private http: HttpClient){
   }
 
 
@@ -62,6 +62,7 @@ export class Screen02Component implements OnInit, OnDestroy {
     this.divAutorizadoError.setAttribute("hidden", "hidden");
 
     localStorage.removeItem('feet_accesstoken');
+    this.global_service.set_isAuthenticated(true); //ATENCION-FAKE
 
     const httpOptionsZero = {
       headers: new HttpHeaders({
@@ -76,6 +77,7 @@ export class Screen02Component implements OnInit, OnDestroy {
         this.divAutorizando.setAttribute("hidden", "hidden");
         this.divAutorizadoOk.removeAttribute("hidden");
         localStorage.setItem('feet_accesstoken', value.access_token);
+        this.global_service.set_isAuthenticated(true);
         console.log('POST response OK') },
       error => {
         this.divAutorizando.setAttribute("hidden", "hidden");
@@ -107,28 +109,32 @@ export class Screen02Component implements OnInit, OnDestroy {
   public actionScreen02left() {
     console.log("TAGG::Screen02::actionScreen02left");
     //alert('Left');
-    this.dato = localStorage.getItem('feet_accesstoken');
-    if (this.dato == null){alert('Not allowed to continue');}
-    else {
-      localStorage.removeItem('feet_sheetmodel');
-      localStorage.setItem('feet_sheetmodel', '1');
-      localStorage.removeItem('feet_foottype');
-      localStorage.setItem('feet_foottype', '1');
+    //this.dato = localStorage.getItem('feet_accesstoken');
+    if (this.global_service.is_authenticated()){
+      this.global_service.set_isSheetUS(false);
+      this.global_service.set_isSheetA4(true);  //ATENCION-FAKE
+      this.global_service.set_isFootLeft(true);
+      this.global_service.set_isFootRight(false);
       this.router.navigateByUrl('/screen03');
+    }
+    else{
+      alert('Not allowed to continue');
     }
   }
 
   public actionScreen02right() {
     console.log("TAGG::Screen02::actionScreen02right");
     //alert('Right');
-    this.dato = localStorage.getItem('feet_accesstoken');
-    if (this.dato == null){alert('Not allowed to continue');}
-    else {
-      localStorage.removeItem('feet_sheetmodel');
-      localStorage.setItem('feet_sheetmodel', '1');
-      localStorage.removeItem('feet_foottype');
-      localStorage.setItem('feet_foottype', '2');
+    //this.dato = localStorage.getItem('feet_accesstoken');
+    if (this.global_service.is_authenticated()){
+      this.global_service.set_isSheetUS(false);
+      this.global_service.set_isSheetA4(true);  //ATENCION-FAKE
+      this.global_service.set_isFootRight(true);
+      this.global_service.set_isFootLeft(false);
       this.router.navigateByUrl('/screen03');
+    }
+    else{
+      alert('Not allowed to continue');
     }
   }
 

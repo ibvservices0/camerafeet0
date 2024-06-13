@@ -17,3 +17,16 @@
     color: white;
     font-weight: 600;
   }
+
+
+
+.custom-div-btphoto {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+  }
+  .custom-img-btphoto {
+    width: 48px;
+    height: 48px;
+  }
