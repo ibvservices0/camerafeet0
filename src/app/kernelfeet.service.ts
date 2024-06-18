@@ -167,6 +167,25 @@ export class KernelfeetService {
     if (this.isEnglish) return 'Not authorized to continue';
     return 'No está autorizado para poder continuar';
   }
-
+  public text_sideInner(){
+    if (this.isEnglish) return 'INNER';
+    return 'INTERIOR';
+  }
+  public text_sideTop(){
+    if (this.isEnglish) return 'TOP';
+    return 'SUPERIOR';
+  }
+  public text_sideOuter(){
+    if (this.isEnglish) return 'OUTER';
+    return 'EXTERIOR';
+  }
+  public text_repeat(){
+    if (this.isEnglish) return 'Repeat';
+    return 'Repetir';
+  }
+  public text_confirm(){
+    if (this.isEnglish) return 'Confirm';
+    return 'Confirmar';
+  }
 
 }

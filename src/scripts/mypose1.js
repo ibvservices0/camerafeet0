@@ -1,19 +1,17 @@
 export function do_pose1(){
 
-    
+    /*
     let but_pose1a = document.getElementById("btphoto_pose1a");
     but_pose1a.addEventListener("click", () => {
         window.removeEventListener("devicemotion", handleMotion);
-        //tomaFoto1();
         alert('Click pose1');
     });
-
     let but_pose1b = document.getElementById("btphoto_pose1b");
     but_pose1b.addEventListener("click", () => {
         window.removeEventListener("devicemotion", handleMotion);
-        //tomaFoto1();
         alert('Click pose1');
     });
+    */
     
 
     //but_pose1a.style.visibility = 'hidden';
@@ -23,6 +21,13 @@ export function do_pose1(){
     navigator.mediaDevices.enumerateDevices().then(gotDevices).then(start).catch(handleError);
     //start();
     //navigator.mediaDevices.getUserMedia(constraints).then(gotStream).catch(handleErrorBis);
+}
+
+
+export function bt_pose1(){
+    window.removeEventListener("devicemotion", handleMotion);
+    //tomaFoto1();
+    //alert('Click pose1');
 }
 
 

@@ -1,15 +1,18 @@
-<mat-toolbar *ngIf="isPortrait" class="custom-toolbar">
-    <span>INNER</span>
+<mat-toolbar *ngIf="isTaken" class="custom-toolbar">
+    <span>{{mytext_sideInner}}</span>
     <span class="example-fill-remaining-space"></span>
+    <button mat-button (click)="repeatInner()">
+        {{mytext_repeat}}
+    </button>
     <button mat-button (click)="toScreen04()">
-        Next
+        {{mytext_confirm}}
     </button>
 </mat-toolbar>
-<!-- <img id="btphoto_pose1" class="custom-img-btphoto" src="assets/images/btphoto.png" /> -->
-<div id="div_vid_pose1" class="custom-div-pose1">
-    <img id="btphoto_pose1a" class="custom-img-btphoto1a" src="assets/images/btphoto.png" />
+<!-- <img id="btphoto_pose1" class="custom-img-btphoto1" src="assets/images/btphoto.png" /> -->
+<div *ngIf="isTaking" id="div_vid_pose1" class="custom-div-pose1">
+    <button id="btphoto_pose1a" class="custom-img-btphoto1a" (click)="clickPhoto1a()"><img src="assets/images/btphoto.png"/></button>
     <video id="vid_pose1" autoPlay="true" muted="true" playsInline="true"></video>
-    <img id="btphoto_pose1b" class="custom-img-btphoto1b" src="assets/images/btphoto.png" />
+    <button id="btphoto_pose1b" class="custom-img-btphoto1b" (click)="clickPhoto1b()"><img src="assets/images/btphoto.png"/></button>
 </div>
 
 

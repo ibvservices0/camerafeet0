@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { KernelfeetService } from '../kernelfeet.service';
 
 
-import { HostListener } from '@angular/core';
+//import { HostListener } from '@angular/core';
 
 import * as mypose1 from '../../scripts/mypose1.js'
 
@@ -18,9 +18,21 @@ import * as mypose1 from '../../scripts/mypose1.js'
 })
 export class Screen03Component implements OnInit, OnDestroy {
 
-  public isPortrait: boolean = true;
+  //public isPortrait: boolean = true;
+  public isTaking: boolean = true;
+  public isTaken: boolean = false;
 
-  constructor(private router: Router, public global_service: KernelfeetService){}
+  public mytext_sideInner: string;
+  public mytext_repeat: string;
+  public mytext_confirm: string;
+
+
+  constructor(private router: Router, public global_service: KernelfeetService){
+    this.mytext_sideInner = global_service.text_sideInner();
+    this.mytext_repeat = global_service.text_repeat();
+    this.mytext_confirm = global_service.text_confirm();
+  }
+
 
   ngOnInit(){
     mypose1.do_pose1();
@@ -28,12 +40,7 @@ export class Screen03Component implements OnInit, OnDestroy {
 
   ngOnDestroy(){}
 
-  public toScreen04() {
-    console.log("TAGG::Screen03::toScreen04");
-    this.router.navigateByUrl('/screen04');
-    //no sirve this.router.navigate([`/screen04`], { skipLocationChange: true });
-  }
-
+  /*
   @HostListener('window:orientationchange', ['$event'])
   onOrientationChange(event: Event) {
     if (this.global_service.is_android()){
@@ -42,12 +49,10 @@ export class Screen03Component implements OnInit, OnDestroy {
       else {this.isPortrait = true;}
     }
     else if (this.global_service.is_ios()){
-      //orientation-Changed-iPHONE
       if (window.innerHeight > window.innerWidth){this.isPortrait = false;}
       else {this.isPortrait = true;}
     }
     else if (this.global_service.is_safari()){
-      //orientation-Changed-iPAD
       if (window.innerHeight > window.innerWidth){this.isPortrait = false;}
       else {this.isPortrait = true;}
     }
@@ -55,5 +60,26 @@ export class Screen03Component implements OnInit, OnDestroy {
       console.log('orientation-Changed');
     }
   }
+  */
+
+  public clickPhoto1a(){this.clickPhoto();}
+  public clickPhoto1b(){this.clickPhoto();}
+  private clickPhoto(){
+    this.isTaking = false;
+    this.isTaken = true;
+    mypose1.bt_pose1();
+  }
+
+  public repeatInner(){
+    this.isTaking = true;
+    this.isTaken = false;
+    mypose1.do_pose1();
+  }
+
+  public toScreen04() {
+    this.router.navigateByUrl('/screen04');
+    //no sirve this.router.navigate([`/screen04`], { skipLocationChange: true });
+  }
+
 
 }
