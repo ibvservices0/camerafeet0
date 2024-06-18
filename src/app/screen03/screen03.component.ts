@@ -31,6 +31,7 @@ export class Screen03Component implements OnInit, OnDestroy {
   public toScreen04() {
     console.log("TAGG::Screen03::toScreen04");
     this.router.navigateByUrl('/screen04');
+    //no sirve this.router.navigate([`/screen04`], { skipLocationChange: true });
   }
 
   @HostListener('window:orientationchange', ['$event'])

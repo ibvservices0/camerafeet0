@@ -20,11 +20,24 @@ export class Screen01Component implements OnInit, OnDestroy {
 
   public isPortrait: boolean = true;
 
+  public mytext_app: string;
+  public mytext_es: string;
+  public mytext_en: string;
+  public mytext_selectLanguage01: string;
+  public mytext_selectLanguage02: string;
+
+
 
   constructor(private router: Router, public global_service: KernelfeetService, private platform: Platform){
     if (this.platform.ANDROID) {this.global_service.set_isAndroid(true);}
     else if (this.platform.IOS){this.global_service.set_isIos(true);}
     else if (this.platform.SAFARI){this.global_service.set_isSafari(true);}
+
+    this.mytext_app = global_service.text_app();
+    this.mytext_es = global_service.text_es();
+    this.mytext_en = global_service.text_en();
+    this.mytext_selectLanguage01 = global_service.text_selectLanguage01();
+    this.mytext_selectLanguage02 = global_service.text_selectLanguage02();
   }
 
   ngOnInit(){}
@@ -32,11 +45,20 @@ export class Screen01Component implements OnInit, OnDestroy {
   ngOnDestroy(){}
 
 
-  public toScreen02() {
-    console.log("TAGG::Screen01::toScreen02");
+  public toScreen02es() {
+    this.global_service.set_isEnglish(false);
     permissionacel.permission_accelerometers();
     this.router.navigateByUrl('/screen02');
   }
+
+  public toScreen02en() {
+    this.global_service.set_isEnglish(true);
+    permissionacel.permission_accelerometers();
+    this.router.navigateByUrl('/screen02');
+  }
+
+
+
 
   @HostListener('window:orientationchange', ['$event'])
   onOrientationChange(event: Event) {
