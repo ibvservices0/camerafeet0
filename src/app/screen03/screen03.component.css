@@ -51,3 +51,18 @@
     width: 80%;
     height: auto;
   }
+
+
+
+  .custom-div-canvas1{
+    display: flex;
+    background-color: #ffffff;
+    justify-content: center;
+  }
+
+  /*
+  .custom-canvas1 {
+    width: 960px; 800
+    height: 720px; 600
+  }
+  */

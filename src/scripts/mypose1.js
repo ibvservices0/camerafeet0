@@ -26,7 +26,7 @@ export function do_pose1(){
 
 export function bt_pose1(){
     window.removeEventListener("devicemotion", handleMotion);
-    //tomaFoto1();
+    tomaFoto1();
     //alert('Click pose1');
 }
 
@@ -159,3 +159,37 @@ function check_visible(valueX, valueY, valueZ){
         but2_pose1b.style.visibility = 'hidden';
     } 
 }
+
+
+function tomaFoto1(){
+    let videoBis = document.getElementById("vid_pose1");
+    /*
+    let ibmap_options = {
+        resizeWidth: 240,
+        resizeHeight: 180
+    };
+    createImageBitmap(videoBis, ibmap_options)
+        .then(imageBitmap => {verEnCanvas(imageBitmap);})
+        .catch(error => alert(error.message));
+    */
+    let canvasLandscape = document.getElementById("thecanvas1landscape");
+    let ctxLandscape = canvasLandscape.getContext('2d');
+    ctxLandscape.clearRect(0, 0, canvasLandscape.width, canvasLandscape.height);
+    ctxLandscape.drawImage(videoBis, 0, 0, canvasLandscape.width, canvasLandscape.height);
+}
+
+
+const getBase64StringFromDataURL = (dataURL) =>
+    dataURL.replace('data:', '').replace(/^.+,/, '');
+
+
+/*
+function verEnCanvas(img){
+    let mycanvas = document.getElementById("thecanvas1");
+    const iw = img.width;
+    const ih = img.height;
+    let ctx = mycanvas.getContext('2d');
+    ctx.clearRect(0, 0, mycanvas.width, mycanvas.height);
+    ctx.drawImage(img, 0, 0);
+}
+*/

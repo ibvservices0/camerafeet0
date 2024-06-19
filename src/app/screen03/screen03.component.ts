@@ -18,7 +18,8 @@ import * as mypose1 from '../../scripts/mypose1.js'
 })
 export class Screen03Component implements OnInit, OnDestroy {
 
-  //public isPortrait: boolean = true;
+  //public isLandscape: boolean = true;
+
   public isTaking: boolean = true;
   public isTaken: boolean = false;
 
@@ -40,27 +41,7 @@ export class Screen03Component implements OnInit, OnDestroy {
 
   ngOnDestroy(){}
 
-  /*
-  @HostListener('window:orientationchange', ['$event'])
-  onOrientationChange(event: Event) {
-    if (this.global_service.is_android()){
-      if (screen.orientation.type.includes('portrait')){this.isPortrait = true;}
-      else if (screen.orientation.type.includes('landscape')){this.isPortrait = false;}
-      else {this.isPortrait = true;}
-    }
-    else if (this.global_service.is_ios()){
-      if (window.innerHeight > window.innerWidth){this.isPortrait = false;}
-      else {this.isPortrait = true;}
-    }
-    else if (this.global_service.is_safari()){
-      if (window.innerHeight > window.innerWidth){this.isPortrait = false;}
-      else {this.isPortrait = true;}
-    }
-    else{
-      console.log('orientation-Changed');
-    }
-  }
-  */
+  
 
   public clickPhoto1a(){this.clickPhoto();}
   public clickPhoto1b(){this.clickPhoto();}
@@ -81,5 +62,29 @@ export class Screen03Component implements OnInit, OnDestroy {
     //no sirve this.router.navigate([`/screen04`], { skipLocationChange: true });
   }
 
+
+  /*
+  @HostListener('window:orientationchange', ['$event'])
+  onOrientationChange(event: Event) {
+    if (this.global_service.is_android()){
+      if (screen.orientation.type.includes('portrait')){this.isLandscape = false;}
+      else if (screen.orientation.type.includes('landscape')){this.isLandscape = true;}
+      else {this.isLandscape = false;}
+    }
+    else if (this.global_service.is_ios()){
+      //orientation-Changed-iPHONE
+      if (window.innerHeight > window.innerWidth){this.isLandscape = true;}
+      else {this.isLandscape = false;}
+    }
+    else if (this.global_service.is_safari()){
+      //orientation-Changed-iPAD
+      if (window.innerHeight > window.innerWidth){this.isLandscape = true;}
+      else {this.isLandscape = false;}
+    }
+    else{
+      console.log('orientation-Changed');
+    }
+  }
+  */
 
 }
