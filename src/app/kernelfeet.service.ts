@@ -105,7 +105,7 @@ export class KernelfeetService {
 
 
   public text_app(){
-    return 'SCANFEET';
+    return ' SCANFEET';
   }
   public text_es(){
     return 'Es';
@@ -168,16 +168,16 @@ export class KernelfeetService {
     return 'No está autorizado para poder continuar';
   }
   public text_sideInner(){
-    if (this.isEnglish) return 'INNER';
-    return 'INTERIOR';
+    if (this.isEnglish) return ' INNER';
+    return ' INTERIOR';
   }
   public text_sideTop(){
-    if (this.isEnglish) return 'TOP';
-    return 'SUPERIOR';
+    if (this.isEnglish) return ' TOP';
+    return ' SUPERIOR';
   }
   public text_sideOuter(){
-    if (this.isEnglish) return 'OUTER';
-    return 'EXTERIOR';
+    if (this.isEnglish) return ' OUTER';
+    return ' EXTERIOR';
   }
   public text_repeat(){
     if (this.isEnglish) return 'Repeat';

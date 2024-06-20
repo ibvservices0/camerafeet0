@@ -4,7 +4,7 @@
     flex: 1 1 auto;
 }
 
-
+/*
 .custom-toolbar {
     position: absolute;
     top: 0;
@@ -17,17 +17,9 @@
     color: white;
     font-weight: 600;
   }
-
-
-/*
-.custom-div-pose1 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    width: 100%;
-  }
 */
+
+
 .custom-div-pose1 {
     display: flex;
     justify-content: center;
@@ -60,9 +52,47 @@
     justify-content: center;
   }
 
-  /*
+  /* En LANDSCAPE al definir estilo,
+  por un BUG extraño pierde resolución la foto
   .custom-canvas1 {
     width: 960px; 800
     height: 720px; 600
   }
   */
+
+
+@media only screen and (orientation: portrait) {
+  .custom-toolbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    background-color: #1976d2;
+    color: white;
+    font-weight: 600;
+  }
+  .custom-canvas1 {
+    width: 360px;
+    height: 270px;
+  }
+
+  }
+
+@media only screen and (orientation: landscape) {
+  .custom-toolbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    background-color: #1976d2;
+    color: white;
+    font-weight: 600;
+  }
+
+  }
