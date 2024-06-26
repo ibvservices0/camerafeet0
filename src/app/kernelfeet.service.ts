@@ -10,6 +10,7 @@ export class KernelfeetService {
   private isSafari: boolean;
 
   private isAuthenticated: boolean;
+  private isReconstructed: boolean;
 
   private isFootLeft: boolean;
   private isFootRight: boolean;
@@ -19,6 +20,8 @@ export class KernelfeetService {
 
   private isEnglish: boolean;
 
+  private feetAccesstoken: string;
+
 
 
   constructor() { 
@@ -27,6 +30,7 @@ export class KernelfeetService {
     this.isSafari = false;
 
     this.isAuthenticated = false;
+    this.isReconstructed = false;
 
     this.isFootLeft = false;
     this.isFootRight = false;
@@ -35,6 +39,45 @@ export class KernelfeetService {
     this.isSheetUS = false;
 
     this.isEnglish = false;
+
+    this.feetAccesstoken = '';
+  }
+
+
+  public webservice_client_id(): string{
+    return 'cliente1';
+  }
+  public webservice_client_secret(): string{
+    return 'tUkSqtHjmxN3';
+  }
+  public webservice_username(): string{
+    return 'cliente1';
+  }
+  public webservice_password(): string{
+    return 'p9$ieE8rT';
+  }
+  public webservice_grant_type(): string{
+    return 'password';
+  }
+  public webservice_license_code(): string{
+    return '520401420429863485';
+  }
+  public webservice_device(): string{
+    return 'access_preview';
+  }
+
+
+  public webservice_base_url(): string{
+    return 'https://avatar3ddev.ibv.org/api/v1';
+  }
+
+
+
+  public set_feet_accesstoken(val: string){
+    this.feetAccesstoken = val;
+  }
+  public feet_accesstoken(): string{
+    return this.feetAccesstoken;
   }
 
 
@@ -74,6 +117,16 @@ export class KernelfeetService {
     return this.isAuthenticated;
   }
 
+  public set_isReconstructed(val: boolean){
+    this.isReconstructed = val;
+  }
+  public is_reconstructed(): boolean{
+    return this.isReconstructed;
+  }
+
+
+
+
   public set_isFootLeft(val: boolean){
     this.isFootLeft = val;
   }
@@ -101,6 +154,20 @@ export class KernelfeetService {
   public is_sheetUS(){
     return this.isSheetUS;
   }
+
+
+  public feet_sheetmodel(): string{
+    if (this.isSheetUS) return '2';
+    else if (this.isSheetA4) return '1';
+    else return '0';
+  }
+
+  public feet_foottype(): string{
+    if (this.isFootRight) return '2';
+    else if (this.isFootLeft) return '1';
+    else return '0';
+  }
+
 
 
 
@@ -156,12 +223,12 @@ export class KernelfeetService {
     return 'Tercera foto de la parte exterior';
   }
   public text_firstMobileInLandscape(){
-    if (this.isEnglish) return 'FIRST PUT MOBILE IN LANDSCAPE';
-    return 'PRIMERO PON EL MOVIL EN APAISADO';
+    if (this.isEnglish) return 'And take photos with mobile in landscape';
+    return 'Y toma fotos con móvil en apaisado';
   }
   public text_selectFoot(){
-    if (this.isEnglish) return 'And then select foot';
-    return 'Y luego selecciona pie';
+    if (this.isEnglish) return 'Select right foot or left';
+    return 'Selecciona pie derecho o izquierdo';
   }
   public text_notAuthorizedToContinue(){
     if (this.isEnglish) return 'Not authorized to continue';
@@ -187,5 +254,22 @@ export class KernelfeetService {
     if (this.isEnglish) return 'Confirm';
     return 'Confirmar';
   }
+  public text_actionCustom(){
+    if (this.isEnglish) return 'Action';
+    return 'Acción';
+  }
+  public text_reconstructionWait(){
+    if (this.isEnglish) return 'Waiting for reconstruction...';
+    return 'Esperando reconstrucción...';
+  }
+  public text_reconstructionOk(){
+    if (this.isEnglish) return 'Reconstruction is OK';
+    return 'Reconstrucción OK';
+  }
+  public text_reconstructionError(){
+    if (this.isEnglish) return 'ERROR in reconstruction';
+    return 'ERROR en reconstrucción';
+  }
+
 
 }

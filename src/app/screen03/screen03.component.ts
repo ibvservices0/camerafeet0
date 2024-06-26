@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { from, fromEvent, Observable, throwError, Subscription } from 'rxjs';
+//import { from, fromEvent, Observable, throwError, Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { KernelfeetService } from '../kernelfeet.service';
 
@@ -19,6 +19,8 @@ import * as mypose1 from '../../scripts/mypose1.js'
 export class Screen03Component implements OnInit, OnDestroy {
 
   //public isLandscape: boolean = true;
+  public isRight: boolean;
+  public isLeft: boolean;
 
   public isTaking: boolean = true;
   public isTaken: boolean = false;
@@ -32,6 +34,8 @@ export class Screen03Component implements OnInit, OnDestroy {
     this.mytext_sideInner = global_service.text_sideInner();
     this.mytext_repeat = global_service.text_repeat();
     this.mytext_confirm = global_service.text_confirm();
+    this.isRight = global_service.is_footRight();
+    this.isLeft = global_service.is_footLeft();
   }
 
 
@@ -57,7 +61,7 @@ export class Screen03Component implements OnInit, OnDestroy {
     mypose1.do_pose1();
   }
 
-  public toScreen04() {
+  public confirmInner() {
     this.router.navigateByUrl('/screen04');
     //no sirve this.router.navigate([`/screen04`], { skipLocationChange: true });
   }

@@ -150,6 +150,7 @@ function check_visible(valueX, valueY, valueZ){
     if (anguloY > 10){
         resp_check = false;
     }
+    
     if (resp_check){
         but2_pose1a.style.visibility = 'visible';
         but2_pose1b.style.visibility = 'visible';
@@ -176,6 +177,13 @@ function tomaFoto1(){
     let ctxLandscape = canvasLandscape.getContext('2d');
     ctxLandscape.clearRect(0, 0, canvasLandscape.width, canvasLandscape.height);
     ctxLandscape.drawImage(videoBis, 0, 0, canvasLandscape.width, canvasLandscape.height);
+
+    const the_dataURL = canvasLandscape.toDataURL('image/jpeg', 1.0);;
+    // Logs data:image/png;base64,wL2dvYWwgbW9yZ...
+    const the_base64 = getBase64StringFromDataURL(the_dataURL);
+    // Logs wL2dvYWwgbW9yZ...
+    localStorage.removeItem('feet_photo1');
+    localStorage.setItem('feet_photo1', the_base64);
 }
 
 

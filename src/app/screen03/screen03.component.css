@@ -60,6 +60,12 @@
   }
   */
 
+  .custom-div-helperA{
+    display: flex;
+    justify-content: center;
+    background-color: #000000;
+  }
+
 
 @media only screen and (orientation: portrait) {
   .custom-toolbar {
@@ -78,6 +84,10 @@
     width: 360px;
     height: 270px;
   }
+  .custom-img-helperA {
+    width: 360px;
+    height: 360px;
+  }
 
   }
 
@@ -93,6 +103,10 @@
     background-color: #1976d2;
     color: white;
     font-weight: 600;
+  }
+  .custom-img-helperA {
+    width: 0px;
+    height: 0px;
   }
 
   }

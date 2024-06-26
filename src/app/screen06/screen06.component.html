@@ -1,8 +1,23 @@
 <mat-toolbar class="custom-toolbar">
-    <span>API</span>
+    <span>{{mytext_app}}</span>
     <span class="example-fill-remaining-space"></span>
-    <button mat-button (click)="toAction()">
-        Action
+    <button mat-button id="action_custom" (click)="actionCustom()">
+        {{mytext_actionCustom}}
     </button>
 </mat-toolbar>
-<p>SCREEN-6</p>
+<br><br><br><br>
+<div class="div_message" id="div_reconstruction_wait" hidden="hidden">{{mytext_reconstructionWait}}</div>
+<div class="div_message" id="div_reconstruction_ok">{{mytext_reconstructionOk}}</div>
+<div class="div_message" id="div_reconstruction_error">{{mytext_reconstructionError}}</div>
+<br><br>
+<span class="span-custom">{{mydata_response_error_code}}</span>
+<br>
+<span class="span-custom">{{mydata_response_sheet_eval}}</span>
+<br>
+<span class="span-custom">{{mydata_response_info}}</span>
+<br>
+<span class="span-custom">{{mydata_response_quality}}</span>
+<br><br><br>
+<span class="span-custom2">{{mydata_response_request_code}}</span>
+<br>
+<span class="span-custom2">{{mydata_log_action}}</span>

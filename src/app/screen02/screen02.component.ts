@@ -14,7 +14,7 @@ import { HttpRequest, HttpHandler, HttpEvent, HttpErrorResponse } from '@angular
 import { JSONloginRequest } from '../ibv-types-adhoc';
 
 
-import { HostListener } from '@angular/core';
+//import { HostListener } from '@angular/core';
 
 
 @Component({
@@ -24,7 +24,7 @@ import { HostListener } from '@angular/core';
 })
 export class Screen02Component implements OnInit, OnDestroy {
 
-  public isLandscape: boolean = false;
+  //public isLandscape: boolean = false;
 
   //private dato: any;
   private divAutorizando: any;
@@ -32,32 +32,24 @@ export class Screen02Component implements OnInit, OnDestroy {
   private divAutorizadoError: any;
 
   /* */
-  private webservice_requestLoginJson: JSONloginRequest = {
-    client_id: "cliente1",
-    client_secret: "tUkSqtHjmxN3",
-    username: "cliente1",
-    password: "p9$ieE8rT",
-    grant_type: "password",
-    license_code: "520401420429863485",
-    device: "access_preview"
-  };
-  private webservice_base_url: string = "https://avatar3ddev.ibv.org/api/v1";
+  private webservice_requestLoginJson: JSONloginRequest;
+  private webservice_base_url: string;
   /**/
 
 
-  public mytext_app;
-  public mytext_autorizando;
-  public mytext_autorizadoOk;
-  public mytext_autorizadoError;
-  public mytext_left;
-  public mytext_right;
-  public mytext_threePhotos;
-  public mytext_firstPhotoIs;
-  public mytext_secondPhotoIs;
-  public mytext_thirdPhotoIs;
-  public mytext_firstMobileInLandscape;
-  public mytext_selectFoot;
-  public mytext_notAuthorizedToContinue;
+  public mytext_app: string;
+  public mytext_autorizando: string;
+  public mytext_autorizadoOk: string;
+  public mytext_autorizadoError: string;
+  public mytext_left: string;
+  public mytext_right: string;
+  public mytext_threePhotos: string;
+  public mytext_firstPhotoIs: string;
+  public mytext_secondPhotoIs: string;
+  public mytext_thirdPhotoIs: string;
+  public mytext_firstMobileInLandscape: string;
+  public mytext_selectFoot: string;
+  public mytext_notAuthorizedToContinue: string;
 
   
   constructor(private router: Router, public global_service: KernelfeetService, private http: HttpClient){
@@ -74,6 +66,17 @@ export class Screen02Component implements OnInit, OnDestroy {
     this.mytext_firstMobileInLandscape = global_service.text_firstMobileInLandscape();
     this.mytext_selectFoot = global_service.text_selectFoot();
     this.mytext_notAuthorizedToContinue = global_service.text_notAuthorizedToContinue();
+
+    this.webservice_requestLoginJson = {
+      client_id: global_service.webservice_client_id(),
+      client_secret: global_service.webservice_client_secret(),
+      username: global_service.webservice_username(),
+      password: global_service.webservice_password(),
+      grant_type: global_service.webservice_grant_type(),
+      license_code: global_service.webservice_license_code(),
+      device: global_service.webservice_device()
+    };
+    this.webservice_base_url = global_service.webservice_base_url();
   }
 
 
@@ -92,8 +95,9 @@ export class Screen02Component implements OnInit, OnDestroy {
     this.divAutorizadoOk.setAttribute("hidden", "hidden");
     this.divAutorizadoError.setAttribute("hidden", "hidden");
 
-    localStorage.removeItem('feet_accesstoken');
-    this.global_service.set_isAuthenticated(true); //ATENCION-FAKE
+    //localStorage.removeItem('feet_accesstoken');
+    this.global_service.set_feet_accesstoken('none');
+    this.global_service.set_isAuthenticated(false); //ATENCION-FAKE
 
     const httpOptionsZero = {
       headers: new HttpHeaders({
@@ -107,7 +111,8 @@ export class Screen02Component implements OnInit, OnDestroy {
       (value:any) => { 
         this.divAutorizando.setAttribute("hidden", "hidden");
         this.divAutorizadoOk.removeAttribute("hidden");
-        localStorage.setItem('feet_accesstoken', value.access_token);
+        //localStorage.setItem('feet_accesstoken', value.access_token);
+        this.global_service.set_feet_accesstoken(value.access_token);
         this.global_service.set_isAuthenticated(true);
         console.log('POST response OK') },
       error => {
@@ -138,14 +143,8 @@ export class Screen02Component implements OnInit, OnDestroy {
 
 
   public actionScreen02left() {
-    console.log("TAGG::Screen02::actionScreen02left");
-    //alert('Left');
-    //this.dato = localStorage.getItem('feet_accesstoken');
     if (!this.global_service.is_authenticated()){
       alert(this.mytext_notAuthorizedToContinue);
-    }
-    else if(!this.isLandscape){
-      alert(this.mytext_firstMobileInLandscape);
     }
     else{
       this.global_service.set_isSheetUS(false);
@@ -157,14 +156,8 @@ export class Screen02Component implements OnInit, OnDestroy {
   }
 
   public actionScreen02right() {
-    console.log("TAGG::Screen02::actionScreen02right");
-    //alert('Right');
-    //this.dato = localStorage.getItem('feet_accesstoken');
     if (!this.global_service.is_authenticated()){
       alert(this.mytext_notAuthorizedToContinue);
-    }
-    else if(!this.isLandscape){
-      alert(this.mytext_firstMobileInLandscape);
     }
     else{
       this.global_service.set_isSheetUS(false);
@@ -176,6 +169,7 @@ export class Screen02Component implements OnInit, OnDestroy {
   }
 
 
+  /*
   @HostListener('window:orientationchange', ['$event'])
   onOrientationChange(event: Event) {
     if (this.global_service.is_android()){
@@ -197,5 +191,7 @@ export class Screen02Component implements OnInit, OnDestroy {
       console.log('orientation-Changed');
     }
   }
+  */
+
 
 }
