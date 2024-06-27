@@ -21,6 +21,7 @@ export class KernelfeetService {
   private isEnglish: boolean;
 
   private feetAccesstoken: string;
+  private footMeasurements: string;
 
 
 
@@ -41,6 +42,7 @@ export class KernelfeetService {
     this.isEnglish = false;
 
     this.feetAccesstoken = '';
+    this.footMeasurements = '';
   }
 
 
@@ -78,6 +80,12 @@ export class KernelfeetService {
   }
   public feet_accesstoken(): string{
     return this.feetAccesstoken;
+  }
+  public set_foot_measurements(measures: string){
+    this.footMeasurements = measures;
+  }
+  public foot_measurements(): string{
+    return this.footMeasurements;
   }
 
 
@@ -255,8 +263,8 @@ export class KernelfeetService {
     return 'Confirmar';
   }
   public text_actionCustom(){
-    if (this.isEnglish) return 'Action';
-    return 'Acción';
+    if (this.isEnglish) return 'View measurements';
+    return 'Ver medidas';
   }
   public text_reconstructionWait(){
     if (this.isEnglish) return 'Waiting for reconstruction...';
@@ -269,6 +277,10 @@ export class KernelfeetService {
   public text_reconstructionError(){
     if (this.isEnglish) return 'ERROR in reconstruction';
     return 'ERROR en reconstrucción';
+  }
+  public text_measuresNotAllowed(){
+    if (this.isEnglish) return 'Failed reconstruction. Measurements are not available.';
+    return 'La reconstrucción no se completó. No hay medidas disponibles.';
   }
 
 

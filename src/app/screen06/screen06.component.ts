@@ -26,6 +26,7 @@ export class Screen06Component implements OnInit, OnDestroy {
   public mytext_reconstructionWait: string;
   public mytext_reconstructionOk: string;
   public mytext_reconstructionError: string;
+  private mytext_measuresNotAllowed: string;
 
   public mydata_response_error_code: any;
   public mydata_response_sheet_eval: any;
@@ -51,6 +52,7 @@ export class Screen06Component implements OnInit, OnDestroy {
     this.mytext_reconstructionWait = global_service.text_reconstructionWait();
     this.mytext_reconstructionOk = global_service.text_reconstructionOk();
     this.mytext_reconstructionError = global_service.text_reconstructionError();
+    this.mytext_measuresNotAllowed = global_service.text_measuresNotAllowed();
 
     let obj_accelero_pose1 = JSON.parse(localStorage.getItem("feet_pose1") || '""');
     let obj_accelero_pose2 = JSON.parse(localStorage.getItem("feet_pose2") || '""');
@@ -108,7 +110,7 @@ export class Screen06Component implements OnInit, OnDestroy {
 
 
   ngOnInit(){
-    //this.webservice_reconstruction();
+    this.webservice_reconstruction();
   }
 
 
@@ -116,7 +118,12 @@ export class Screen06Component implements OnInit, OnDestroy {
 
 
   public actionCustom() {
-    this.webservice_reconstruction();
+    if (this.global_service.is_reconstructed()){
+      alert('VER-MEDIDAS');
+    }
+    else{
+      alert(this.mytext_measuresNotAllowed);
+    }
   }
 
 
@@ -140,6 +147,7 @@ export class Screen06Component implements OnInit, OnDestroy {
     const localUrl = this.webservice_base_url + "/models/reconstruction";
 
     this.global_service.set_isReconstructed(false);
+
     this.mydata_response_error_code = '';
     this.mydata_response_sheet_eval = '';
     this.mydata_response_info = '';
@@ -151,13 +159,23 @@ export class Screen06Component implements OnInit, OnDestroy {
       (respjson:any) => { 
         this.divReconstructionWait.setAttribute("hidden", "hidden");
         this.divReconstructionOk.removeAttribute("hidden");
-        this.global_service.set_isReconstructed(true);
         console.log('POST response OK');
-        this.mydata_response_error_code = JSON.stringify(respjson.error_code);
-        this.mydata_response_sheet_eval = respjson.sheet_eval;
-        this.mydata_response_info = respjson.info;
-        this.mydata_response_quality = respjson.quality;
-        this.mydata_response_request_code = respjson.request_code;
+        let str_error_code: string = JSON.stringify(respjson.error_code);
+        this.mydata_response_error_code = str_error_code;
+        this.mydata_response_sheet_eval = 'Sheet-Eval: ' + respjson.sheet_eval;
+        this.mydata_response_info = 'Info: ' + respjson.info;
+        this.mydata_response_quality = 'Quality: ' + respjson.quality;
+        this.mydata_response_request_code = 'Request-Code: ' + respjson.request_code;
+
+        if (str_error_code.includes('"1D_MES":0,"3D_MODEL":0')){
+          this.global_service.set_isReconstructed(true); //importante
+          var str_parameters: string = JSON.stringify(respjson.parameters);
+          var str_parameters2: string = str_parameters.replace('1D_MES', 'the1D_MES');
+          let obj_parameters = JSON.parse(str_parameters2);
+          let str_measurements: string = JSON.stringify(obj_parameters.the1D_MES);
+          this.global_service.set_foot_measurements(str_measurements);
+        }
+
       },error => {
         this.divReconstructionWait.setAttribute("hidden", "hidden");
         this.divReconstructionError.removeAttribute("hidden");

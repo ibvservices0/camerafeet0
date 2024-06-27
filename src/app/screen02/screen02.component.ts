@@ -49,7 +49,7 @@ export class Screen02Component implements OnInit, OnDestroy {
   public mytext_thirdPhotoIs: string;
   public mytext_firstMobileInLandscape: string;
   public mytext_selectFoot: string;
-  public mytext_notAuthorizedToContinue: string;
+  private mytext_notAuthorizedToContinue: string;
 
   
   constructor(private router: Router, public global_service: KernelfeetService, private http: HttpClient){
