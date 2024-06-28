@@ -35,3 +35,14 @@
   text-align: center;
   display: block;
 }
+
+
+.custom-div-splash{
+  display: flex;
+  justify-content: center;
+  background-color: #ffffff;
+}
+.custom-img-splash {
+  width: 240px;
+  height: 240px;
+}

@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { from, fromEvent, Observable, throwError, Subscription } from 'rxjs';
+//import { from, fromEvent, Observable, throwError, Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { KernelfeetService } from '../kernelfeet.service';
 
@@ -119,7 +119,7 @@ export class Screen06Component implements OnInit, OnDestroy {
 
   public actionCustom() {
     if (this.global_service.is_reconstructed()){
-      alert('VER-MEDIDAS');
+      this.router.navigateByUrl('/screen07');
     }
     else{
       alert(this.mytext_measuresNotAllowed);
@@ -146,7 +146,8 @@ export class Screen06Component implements OnInit, OnDestroy {
 
     const localUrl = this.webservice_base_url + "/models/reconstruction";
 
-    this.global_service.set_isReconstructed(false);
+    this.global_service.set_isReconstructed(false); //ATENCION-FAKE dejar_false
+    this.global_service.set_foot_measurements('{}');
 
     this.mydata_response_error_code = '';
     this.mydata_response_sheet_eval = '';
@@ -180,7 +181,8 @@ export class Screen06Component implements OnInit, OnDestroy {
         this.divReconstructionWait.setAttribute("hidden", "hidden");
         this.divReconstructionError.removeAttribute("hidden");
         console.log('ERROR: ' + error);
-        this.mydata_log_action = error.message;
+        //this.mydata_log_action = error.message;
+        alert(error.message);
       }
     );
 

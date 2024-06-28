@@ -97,7 +97,7 @@ export class Screen02Component implements OnInit, OnDestroy {
 
     //localStorage.removeItem('feet_accesstoken');
     this.global_service.set_feet_accesstoken('none');
-    this.global_service.set_isAuthenticated(false); //ATENCION-FAKE
+    this.global_service.set_isAuthenticated(false); //ATENCION-FAKE dejar_false
 
     const httpOptionsZero = {
       headers: new HttpHeaders({
@@ -152,6 +152,9 @@ export class Screen02Component implements OnInit, OnDestroy {
       this.global_service.set_isFootLeft(true);
       this.global_service.set_isFootRight(false);
       this.router.navigateByUrl('/screen03');
+
+      //this.global_service.set_foot_measurements('{"IG":233.5,"BW":99,"FL":264.9,"BG":237}');
+      //this.router.navigateByUrl('/screen07');
     }
   }
 
@@ -165,6 +168,9 @@ export class Screen02Component implements OnInit, OnDestroy {
       this.global_service.set_isFootRight(true);
       this.global_service.set_isFootLeft(false);
       this.router.navigateByUrl('/screen03');
+
+      //this.global_service.set_foot_measurements('{"IG":233.5,"BW":99,"FL":264.9,"BG":237}');
+      //this.router.navigateByUrl('/screen07');
     }
   }
 

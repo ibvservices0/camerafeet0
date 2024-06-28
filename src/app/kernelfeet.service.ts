@@ -282,6 +282,10 @@ export class KernelfeetService {
     if (this.isEnglish) return 'Failed reconstruction. Measurements are not available.';
     return 'La reconstrucción no se completó. No hay medidas disponibles.';
   }
+  public text_actionRecommend(){
+    if (this.isEnglish) return 'Recommend ';
+    return 'Recomendar ';
+  }
 
 
 }
