@@ -215,20 +215,20 @@ export class KernelfeetService {
     return 'Derecho';
   }
   public text_threePhotos(){
-    if (this.isEnglish) return 'You will make 3 photos of the foot';
-    return 'Vas a hacer 3 fotos del pie';
+    if (this.isEnglish) return 'You will make 3 photos of the foot.';
+    return 'Vas a hacer 3 fotos del pie.';
   }
   public text_firstPhotoIs(){
-    if (this.isEnglish) return 'First photo of the inner side';
-    return 'Primera foto de la parte interior';
+    if (this.isEnglish) return 'First photo of the inner side.';
+    return 'Primera foto de la parte interior.';
   }
   public text_secondPhotoIs(){
-    if (this.isEnglish) return 'Second photo of the top side';
-    return 'Segunda foto de la parte superior';
+    if (this.isEnglish) return 'Second photo of the top side.';
+    return 'Segunda foto de la parte superior.';
   }
   public text_thirdPhotoIs(){
-    if (this.isEnglish) return 'Third photo of the outer side';
-    return 'Tercera foto de la parte exterior';
+    if (this.isEnglish) return 'Third photo of the outer side.';
+    return 'Tercera foto de la parte exterior.';
   }
   public text_firstMobileInLandscape(){
     if (this.isEnglish) return 'And take photos with mobile in landscape';
@@ -262,7 +262,7 @@ export class KernelfeetService {
     if (this.isEnglish) return 'Confirm';
     return 'Confirmar';
   }
-  public text_actionCustom(){
+  public text_actionMeasurements(){
     if (this.isEnglish) return 'View measurements';
     return 'Ver medidas';
   }
@@ -271,21 +271,48 @@ export class KernelfeetService {
     return 'Esperando reconstrucción...';
   }
   public text_reconstructionOk(){
-    if (this.isEnglish) return 'Reconstruction is OK';
-    return 'Reconstrucción OK';
+    if (this.isEnglish) return 'Reconstruction';
+    return 'Reconstrucción';
   }
   public text_reconstructionError(){
     if (this.isEnglish) return 'ERROR in reconstruction';
     return 'ERROR en reconstrucción';
   }
   public text_measuresNotAllowed(){
-    if (this.isEnglish) return 'Failed reconstruction. Measurements are not available.';
+    if (this.isEnglish) return 'Unfinished reconstruction. Measurements are not available.';
     return 'La reconstrucción no se completó. No hay medidas disponibles.';
   }
   public text_actionRecommend(){
     if (this.isEnglish) return 'Recommend ';
     return 'Recomendar ';
   }
-
+  public text_reconsInfoPlus1(){
+    if (this.isEnglish) return 'Not optimal reconstruction. Repeat the photos.';
+    return 'La reconstrucción no es óptima. Repite las fotos.';
+  }
+  public text_reconsInfoPlus2(){
+    if (this.isEnglish) return 'Wrong reconstruction. Repeat the photos.';
+    return 'La reconstrucción es errónea. Repite las fotos.';
+  }
+  public text_reconsInfoPlus3(){
+    if (this.isEnglish) return 'Not enough good images for reconstruction. Repeat the photos.';
+    return 'No hay suficientes buenas imágenes para la reconstrucción. Repite las fotos.';
+  }
+  public text_reconsInfoPlus4(){
+    if (this.isEnglish) return 'The dimensions of the paper sheet specified in the json file input do not match the paper sheet dimensions calculated. Repeat the photos.';
+    return 'Las dimensiones de la hoja especificadas en el json no coinciden con las dimensiones de la hoja calculada. Repite las fotos.';
+  }
+  public text_reconsInfoMinus1(){
+    if (this.isEnglish) return 'A general error has occurred in the reconstruction process. Repeat the photos.';
+    return 'Un error general ha ocurrido en el proceso de reconstrucción. Repite las fotos.';
+  }
+  public text_fourCornersOfSheet(){
+    if (this.isEnglish) return 'THE 4 CORNERS OF THE SHEET MUST';
+    return 'LAS 4 ESQUINAS DE LA HOJA DEBEN';
+  }
+  public text_fourCornersOfSheetBis(){
+    if (this.isEnglish) return 'BE VISIBLE IN EACH PHOTO.';
+    return 'ESTAR VISIBLES EN CADA FOTO.';
+  }
 
 }

@@ -1,8 +1,11 @@
 <mat-toolbar class="custom-toolbar">
     <span>{{mytext_app}}</span>
     <span class="example-fill-remaining-space"></span>
-    <button mat-button id="action_custom" (click)="actionCustom()">
-        {{mytext_actionCustom}}
+    <button *ngIf="!flagRepeat" mat-button id="action_measurements" (click)="actionMeasurements()">
+        {{mytext_actionMeasurements}}
+    </button>
+    <button *ngIf="flagRepeat" mat-button id="action_repeat" (click)="actionRepeat()">
+        {{mytext_repeat}}
     </button>
 </mat-toolbar>
 <br><br><br><br>

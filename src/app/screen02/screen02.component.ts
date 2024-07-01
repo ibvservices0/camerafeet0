@@ -47,6 +47,8 @@ export class Screen02Component implements OnInit, OnDestroy {
   public mytext_firstPhotoIs: string;
   public mytext_secondPhotoIs: string;
   public mytext_thirdPhotoIs: string;
+  public mytext_fourCornersOfSheet : string;
+  public mytext_fourCornersOfSheetBis : string;
   public mytext_firstMobileInLandscape: string;
   public mytext_selectFoot: string;
   private mytext_notAuthorizedToContinue: string;
@@ -63,6 +65,8 @@ export class Screen02Component implements OnInit, OnDestroy {
     this.mytext_firstPhotoIs = global_service.text_firstPhotoIs();
     this.mytext_secondPhotoIs = global_service.text_secondPhotoIs();
     this.mytext_thirdPhotoIs = global_service.text_thirdPhotoIs();
+    this.mytext_fourCornersOfSheet = global_service.text_fourCornersOfSheet();
+    this.mytext_fourCornersOfSheetBis = global_service.text_fourCornersOfSheetBis();
     this.mytext_firstMobileInLandscape = global_service.text_firstMobileInLandscape();
     this.mytext_selectFoot = global_service.text_selectFoot();
     this.mytext_notAuthorizedToContinue = global_service.text_notAuthorizedToContinue();
