@@ -170,6 +170,7 @@ export class Screen06Component implements OnInit, OnDestroy {
 
     this.global_service.set_isReconstructed(false); //ATENCION-FAKE dejar_false
     this.global_service.set_foot_measurements('{}');
+    this.global_service.set_obj_footMeasurements(null);
 
     this.mydata_response_error_code = '';
     this.mydata_response_sheet_eval = '';
@@ -199,6 +200,7 @@ export class Screen06Component implements OnInit, OnDestroy {
             let obj_parameters = JSON.parse(str_parameters2);
             let str_measurements: string = JSON.stringify(obj_parameters.the1D_MES);
             this.global_service.set_foot_measurements(str_measurements);
+            this.global_service.set_obj_footMeasurements(obj_parameters.the1D_MES);
           }
           else{
             this.flagRepeat = true; //¿?

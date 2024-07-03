@@ -22,6 +22,7 @@ export class KernelfeetService {
 
   private feetAccesstoken: string;
   private footMeasurements: string;
+  private objFootMeasurements: any;
 
 
 
@@ -86,6 +87,12 @@ export class KernelfeetService {
   }
   public foot_measurements(): string{
     return this.footMeasurements;
+  }
+  public set_obj_footMeasurements(objMeasures: any){
+    this.objFootMeasurements = objMeasures;
+  }
+  public obj_footMeasurements(): any{
+    return this.objFootMeasurements;
   }
 
 

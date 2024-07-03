@@ -1,7 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { from, fromEvent, Observable, throwError, Subscription } from 'rxjs';
-import { Router } from '@angular/router';
 import { KernelfeetService } from '../kernelfeet.service';
+//import { Router } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 
 
 import { Platform } from '@angular/cdk/platform';
@@ -28,7 +29,7 @@ export class Screen01Component implements OnInit, OnDestroy {
 
 
 
-  constructor(private router: Router, public global_service: KernelfeetService, private platform: Platform){
+  constructor(private router: Router, public global_service: KernelfeetService, private platform: Platform, private activatedRoute: ActivatedRoute){
     if (this.platform.ANDROID) {this.global_service.set_isAndroid(true);}
     else if (this.platform.IOS){this.global_service.set_isIos(true);}
     else if (this.platform.SAFARI){this.global_service.set_isSafari(true);}
@@ -40,7 +41,11 @@ export class Screen01Component implements OnInit, OnDestroy {
     this.mytext_selectLanguage02 = global_service.text_selectLanguage02();
   }
 
-  ngOnInit(){}
+  ngOnInit(){
+    console.log('SCREEN01');
+    let input1 = this.activatedRoute.snapshot.params['input'];
+    console.log(input1); //undefined
+  }
 
   ngOnDestroy(){}
 

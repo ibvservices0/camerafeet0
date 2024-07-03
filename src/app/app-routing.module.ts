@@ -13,6 +13,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 
 const routes: Routes = [
   { path: 'screen01', component: Screen01Component },
+  { path: 'screen01/:input', component: Screen01Component },
   { path: 'screen02', component: Screen02Component },
   { path: 'screen03', component: Screen03Component },
   { path: 'screen04', component: Screen04Component },
