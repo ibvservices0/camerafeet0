@@ -27,6 +27,8 @@ export class Screen01Component implements OnInit, OnDestroy {
   public mytext_selectLanguage01: string;
   public mytext_selectLanguage02: string;
 
+  public mytext_input: string = '';
+
 
 
   constructor(private router: Router, public global_service: KernelfeetService, private platform: Platform, private activatedRoute: ActivatedRoute){
@@ -43,8 +45,13 @@ export class Screen01Component implements OnInit, OnDestroy {
 
   ngOnInit(){
     console.log('SCREEN01');
-    let input1 = this.activatedRoute.snapshot.params['input'];
-    console.log(input1); //undefined
+    let input1 = this.activatedRoute.snapshot.params['input']; //undefined
+    if (input1 !== undefined){
+      let sInput1 = new String(input1);
+      let s_input1 = sInput1.toString();
+
+      this.mytext_input = s_input1;
+    }
   }
 
   ngOnDestroy(){}
