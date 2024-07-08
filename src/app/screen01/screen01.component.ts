@@ -47,10 +47,23 @@ export class Screen01Component implements OnInit, OnDestroy {
     console.log('SCREEN01');
     let input1 = this.activatedRoute.snapshot.params['input']; //undefined
     if (input1 !== undefined){
-      let sInput1 = new String(input1);
-      let s_input1 = sInput1.toString();
+      let sInput1: String = new String(input1);
+      let s_input1: string = sInput1.toString();
 
-      this.mytext_input = s_input1;
+      let arrBuf: ArrayBuffer = this.base64url_decode(s_input1);
+      const decoder = new TextDecoder("utf-8", {fatal: false});
+      let s_input2: string = decoder.decode(arrBuf);
+
+      let arr_input: string[] = s_input2.split('&');
+      this.global_service.set_the_inputs(arr_input);
+
+      console.log(this.global_service.the_input1());
+      console.log(this.global_service.the_input2());
+      console.log(this.global_service.the_input3());
+      console.log(this.global_service.the_input4());
+      console.log(this.global_service.the_input5());
+
+      //this.mytext_input = s_input2;
     }
   }
 
@@ -68,6 +81,18 @@ export class Screen01Component implements OnInit, OnDestroy {
     permissionacel.permission_accelerometers();
     this.router.navigateByUrl('/screen02');
   }
+
+
+
+  base64url_decode(value: string): ArrayBuffer {
+    const m = value.length % 4;
+    return Uint8Array.from(atob(
+        value.replace(/-/g, '+')
+            .replace(/_/g, '/')
+            .padEnd(value.length + (m === 0 ? 0 : 4 - m), '=')
+    ), c => c.charCodeAt(0)).buffer
+  }
+
 
 
 

@@ -24,6 +24,12 @@ export class KernelfeetService {
   private footMeasurements: string;
   private objFootMeasurements: any;
 
+  private input1: any; //client_id
+  private input2: any; //client_secret
+  private input3: any; //product_code
+  private input4: any; //url_web_return
+  private input5: any; //code_user
+
 
 
   constructor() { 
@@ -72,6 +78,69 @@ export class KernelfeetService {
 
   public webservice_base_url(): string{
     return 'https://avatar3ddev.ibv.org/api/v1';
+  }
+
+
+
+  public set_the_inputs(inputs: string[]){
+
+    if (inputs.length > 4){
+      var str5: string = inputs[4];
+      this.input5 = str5.replace('input5=', '');
+    }
+    else{
+      this.input5 = null;
+    }
+
+    if (inputs.length > 3){
+      var str4: string = inputs[3];
+      this.input4 = str4.replace('input4=', '');
+    }
+    else{
+      this.input4 = null;
+    }
+
+    if (inputs.length > 2){
+      var str3: string = inputs[2];
+      this.input3 = str3.replace('input3=', '');
+    }
+    else{
+      this.input3 = null;
+    }
+
+    if (inputs.length > 1){
+      var str2: string = inputs[1];
+      this.input2 = str2.replace('input2=', '');
+    }
+    else{
+      this.input2 = null;
+    }
+
+    if (inputs.length > 0){
+      var str1: string = inputs[0];
+      this.input1 = str1.replace('input1=', '');
+    }
+    else{
+      this.input1 = null;
+    }
+
+  }
+  
+
+  public the_input1(): any{
+    return this.input1;
+  }
+  public the_input2(): any{
+    return this.input2;
+  }
+  public the_input3(): any{
+    return this.input3;
+  }
+  public the_input4(): any{
+    return this.input4;
+  }
+  public the_input5(): any{
+    return this.input5;
   }
 
 
